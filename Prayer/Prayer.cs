@@ -19,26 +19,33 @@ public class Prayer : AuditableRecord
 
     public override string ToString()
     {
-        string result = $"{Title}\n";
+        string result = $"{Title}";
 
         if(Subtitle != null)
         {
-            result += $"{Subtitle}\n";
+            result += "\n";
+            result += $"{Subtitle}";
         }
 
         if(Author != null)
         {
-            result += $"by {Author}\n";
+            result += "\n";
+            result += $"by {Author}";
         }
 
 
         if(ScriptureReferences.Count > 0)
         {
+            result+="\n";
             result += string.Join(", ", ScriptureReferences);
-            result += "\n";
         }
 
-
+        if(Tags.Count > 0)
+        {
+            result += "\n";
+            result += "Tags: ";
+            result += string.Join(", ", Tags);
+        }
 
         return result;
     }
